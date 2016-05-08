@@ -1,0 +1,26 @@
+<ion-navbar *navbar>
+  <ion-title>Tab 1</ion-title>
+</ion-navbar>
+
+<ion-content padding class="page1">
+
+  <form id="todo-form" (ngSubmit)="onAddTodo(input)" autocomplete="off">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Add Todo</ion-label>
+        <ion-input type="text" value="" #input></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <ion-list>
+    <ion-item *ngFor="#todo of todos">
+      <ion-label>{{todo.description}}</ion-label>
+      <ion-checkbox (ngModelChange)="onToggleTodo(todo)" [(ngModel)]="todo.completed"></ion-checkbox>
+      <button (click)=onRemoveTodo(todo) item-right clear>
+          <ion-icon name="trash" ></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
